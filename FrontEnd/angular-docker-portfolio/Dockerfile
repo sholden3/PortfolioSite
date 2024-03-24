@@ -6,6 +6,8 @@ FROM node:alpine as build
 # Set the working directory
 WORKDIR /usr/local/app
 
+RUN npm cache clean --force
+
 # Add source code to app. Grab all source code in current directory.
 COPY ./ /usr/local/app/
 
@@ -22,6 +24,7 @@ FROM nginx:alpine
 
 # Copy the build output to replace the default nginx contents
 COPY --from=build /usr/local/app/dist/angular-docker-portfolio /usr/share/nginx/html
+COPY /nginx.conf  /etc/nginx/conf.d/default.conf
 
 # Expose port 80
 EXPOSE 80
