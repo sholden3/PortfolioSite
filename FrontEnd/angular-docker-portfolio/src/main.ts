@@ -13,7 +13,8 @@ if (environment.production) {
 posthog.init(
   'phc_Yv2l8W8bYdHXzM6SToxoQ7MQsVP1z5vhyyR6YZF0KLo',
   {
-    api_host:"https://us.posthog.com"
+    api_host:"https://us.posthog.com",
+    capture_pageview: false
   }
 )
 
